@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TodoController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+
+// mark a specific todo as completed
+Route::patch('todos/completed/{todo}', [TodoController::class, 'mark_completed']);
+
+// mark a specific todo as incomplete
+Route::patch('todos/incomplete/{todo}', [TodoController::class, 'mark_incomplete']);
+
+Route::apiResource('todos', TodoController::class);

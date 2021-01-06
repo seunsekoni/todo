@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Todo;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -46,6 +49,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+        });
+
+        Route::bind('todo', function($value) {
+            return $todo = Todo::where('id', $value)->first();
         });
     }
 
