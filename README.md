@@ -18,4 +18,4 @@ A simple todo list app to help manage todo lists
 - Rename .env.example in the root folder to .env
 - Set up your environment settings and other related setting in the ```.env``` file
 - From the terminal run ``` php artisan migrate ```
-- To run tests, type ``` php artisan tests ```
+- To run tests, type ``` php artisan test ```
